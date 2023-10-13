@@ -26,8 +26,10 @@ WIDTH_OF_LINE = 5
 inc_or_dec_up_down = 1
 inc_or_dec_left_right = 1
 inc_value = HEIGHT/100
+
 x_pos = 0.201*WIDTH+2.3*WIDTH_OF_LINE
 y_pos = 0.6 * HEIGHT 
+
 counter = 10
 
 color_inc_or_dec = [1,1,1]
