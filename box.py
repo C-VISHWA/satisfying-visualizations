@@ -1,5 +1,6 @@
 import pygame
 import random
+import os
 
 # Initialize Pygame
 pygame.init()
@@ -13,6 +14,7 @@ pygame.display.set_caption("BoXeS")
 clock = pygame.time.Clock()
 run = True
 
+
 FPS = 60
 GREY = (128, 128, 128)
 DARKGREY = (65, 65, 65)
@@ -21,11 +23,11 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 COLOUR = GRADIENT_START
 WIDTH_OF_LINE = 5
-inc_or_dec_up_down = -1
+inc_or_dec_up_down = 1
 inc_or_dec_left_right = 1
 inc_value = HEIGHT/100
-x_pos = 0.2*WIDTH+2*WIDTH_OF_LINE
-y_pos = 0.8 * HEIGHT
+x_pos = 0.201*WIDTH+2.3*WIDTH_OF_LINE
+y_pos = 0.6 * HEIGHT 
 counter = 10
 
 color_inc_or_dec = [1,1,1]
@@ -55,21 +57,26 @@ def draw_window():
     pygame.draw.rect(WIN, DARKGREY, inner_box, width=WIDTH_OF_LINE//2)
 
     if outer_box.colliderect(inner_box):
-        if outer_box.top >= inner_box.top:
+        blockhit = pygame.mixer.Sound(os.path.join('satisfying-visualizations','sound','block hit.wav'))
+        if outer_box.top > inner_box.top-9:
             # collision_direction: top
             inc_or_dec_up_down *= -1
+            pygame.mixer.Sound.play(blockhit)
 
-        if outer_box.bottom <= inner_box.bottom:
+        if outer_box.bottom-9 < inner_box.bottom:
             # collision_direction: bottom
             inc_or_dec_up_down *= -1
+            pygame.mixer.Sound.play(blockhit)
 
-        if outer_box.right <= inner_box.right:
+        if outer_box.right-8.1 < inner_box.right:
             # collision_direction: left
             inc_or_dec_left_right *= -1
+            pygame.mixer.Sound.play(blockhit)
 
-        if outer_box.left >= inner_box.left:
+        if outer_box.left > inner_box.left-6:
             # collision_direction: right
             inc_or_dec_left_right *= -1
+            pygame.mixer.Sound.play(blockhit)
 
 
     x_pos += inc_value*inc_or_dec_left_right
