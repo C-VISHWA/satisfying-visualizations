@@ -48,7 +48,7 @@ def new_colour(colour):
 def draw_window():
 
     global x_pos, y_pos, inc_or_dec_left_right, inc_or_dec_up_down, COLOUR
-    blockcreation = pygame.mixer.Sound(os.path.join('satisfying-visualizations','sound','block creation.wav'))
+    blockcreation = pygame.mixer.Sound(os.path.join('sound','block creation.wav'))
     pygame.mixer.Sound.play(blockcreation)
 
     outer_box = pygame.Rect(0.2*WIDTH+WIDTH_OF_LINE, 0.1*HEIGHT+WIDTH_OF_LINE, 0.6*WIDTH, 0.8*HEIGHT)
@@ -61,7 +61,7 @@ def draw_window():
     pygame.draw.rect(WIN, DARKGREY, inner_box, width=WIDTH_OF_LINE//2)
 
     if outer_box.colliderect(inner_box):
-        blockhit = pygame.mixer.Sound(os.path.join('satisfying-visualizations','sound','block hit.wav'))
+        blockhit = pygame.mixer.Sound(os.path.join('sound','block hit.wav'))
         if outer_box.top > inner_box.top-9:
             # collision_direction: top
             inc_or_dec_up_down *= -1
