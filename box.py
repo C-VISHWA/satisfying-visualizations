@@ -48,6 +48,8 @@ def new_colour(colour):
 def draw_window():
 
     global x_pos, y_pos, inc_or_dec_left_right, inc_or_dec_up_down, COLOUR
+    blockcreation = pygame.mixer.Sound(os.path.join('satisfying-visualizations','sound','block creation.wav'))
+    pygame.mixer.Sound.play(blockcreation)
 
     outer_box = pygame.Rect(0.2*WIDTH+WIDTH_OF_LINE, 0.1*HEIGHT+WIDTH_OF_LINE, 0.6*WIDTH, 0.8*HEIGHT)
     inner_box = pygame.Rect(x_pos, y_pos, 0.1 * HEIGHT, 0.1*HEIGHT)
